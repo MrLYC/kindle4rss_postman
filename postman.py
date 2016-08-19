@@ -49,6 +49,8 @@ if __name__ == "__main__":
     postman = Postman()
     if postman.login(args.username, args.password):
         postman.send_to_kindle()
+    else:
+        sys.exit(2)
 
     sys.exit(0)
 
