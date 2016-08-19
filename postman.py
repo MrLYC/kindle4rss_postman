@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+import sys
 import urlparse
 import argparse
 
@@ -37,12 +38,17 @@ class Postman(object):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("u", "username", help="login email")
-    parser.add_argument("p", "password", help="login password")
+    parser.add_argument("-u", "--username", help="login email")
+    parser.add_argument("-p", "--password", help="login password")
 
     args = parser.parse_args()
+
+    if not args.username or not args.password:
+        sys.exit(1)
 
     postman = Postman()
     if postman.login(args.username, args.password):
         postman.send_to_kindle()
+
+    sys.exit(0)
 
