@@ -24,7 +24,7 @@ class Postman(object):
             },
             verify=False,
         )
-        return response.find(username) >= 0
+        return response.content.find(username) >= 0
 
     def send_to_kindle(self):
         for i in range(3):  # retry for 3 times
