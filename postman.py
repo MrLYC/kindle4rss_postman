@@ -29,7 +29,7 @@ class Postman(object):
     def send_to_kindle(self):
         for i in range(3):  # retry for 3 times
             try:
-                response = self.session.post(self.send_url)
+                response = self.session.post(self.send_url, verify=False)
                 if response.status_code == 200:
                     break
             except requests.HTTPError:
